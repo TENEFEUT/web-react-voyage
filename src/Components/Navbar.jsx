@@ -1,98 +1,82 @@
+// Navbar.jsx
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FaUserCircle, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import './Navbar.css';
 
 export default function Navbar({ user, onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [destination, setDestination] = useState('');
-  const [date, setDate] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    navigate(`/reservation?destination=${destination}&date=${date}`);
-  };
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   return (
     <nav className="nav">
+      {/* Logo */}
       <Link to="/" className="nav-logo">TravelGo</Link>
 
-      {/* Barre de recherche */}
-      <form className="search-bar" onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="Destination"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          required
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-        <button type="submit">Rechercher</button>
-      </form>
-
-      <div className="nav-links">
-        <Link to="/" className="link">Accueil</Link>
-        <Link to="/reservation" className="link">Réserver</Link>
-
-        {user ? (
-          <>
-            <Link to="/history" className="link">Historique</Link>
-            <button onClick={onLogout} className="link button-link">Déconnexion</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="link">Connexion</Link>
-            <Link to="/signup" className="link">Créer un compte</Link>
-          </>
-        )}
+      {/* Menu central */}
+      <div className={`nav-links${menuOpen ? ' mobile-open' : ''}`}>
+        <Link to="/">Accueil</Link>
+        <Link to="/reservation">Réserver</Link>
+        <Link to="/suivi">Suivi Trajet</Link>
+        {user && <Link to="/history">Historique</Link>}
       </div>
 
-      <button
-        className="hamburger"
-        aria-label="Menu"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        &#9776;
+      {/* Bouton utilisateur */}
+      <div className="user-menu">
+        <FaUserCircle 
+          className="user-icon" 
+          onClick={() => setUserMenuOpen(!userMenuOpen)} 
+        />
+        <div className={`user-dropdown${userMenuOpen ? ' open' : ''}`}>
+          {user ? (
+            <button onClick={() => { onLogout(); setUserMenuOpen(false); }}>
+              <FaSignInAlt style={{ marginRight: '6px' }} />
+              Déconnexion
+            </button>
+          ) : (
+            <>
+              <Link to="/login" onClick={() => setUserMenuOpen(false)}>
+                <FaSignInAlt style={{ marginRight: '6px' }} />
+                Connexion
+              </Link>
+              <Link to="/signup" onClick={() => setUserMenuOpen(false)}>
+                <FaUserPlus style={{ marginRight: '6px' }} />
+                S'inscrire
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Hamburger mobile */}
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <span className="hamburger-bar"></span>
+        <span className="hamburger-bar"></span>
+        <span className="hamburger-bar"></span>
       </button>
 
-      {/* Mobile */}
+      {/* Menu mobile */}
       <div className={`nav-links-mobile${menuOpen ? ' show' : ''}`}>
-        <form className="search-bar-mobile" onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Destination"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            required
-          />
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-          <button type="submit">Rechercher</button>
-        </form>
-
-        <Link to="/" className="link" onClick={() => setMenuOpen(false)}>Accueil</Link>
-        <Link to="/reservation" className="link" onClick={() => setMenuOpen(false)}>Réserver</Link>
-
-        {user ? (
+        <Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link>
+        <Link to="/reservation" onClick={() => setMenuOpen(false)}>Réserver</Link>
+        <Link to="/suivi" onClick={() => setMenuOpen(false)}>Suivi Trajet</Link>
+        {user && <Link to="/history" onClick={() => setMenuOpen(false)}>Historique</Link>}
+        {!user && (
           <>
-            <Link to="/history" className="link" onClick={() => setMenuOpen(false)}>Historique</Link>
-            <button onClick={() => { setMenuOpen(false); onLogout(); }} className="link button-link">Déconnexion</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="link" onClick={() => setMenuOpen(false)}>Connexion</Link>
-            <Link to="/signup" className="link" onClick={() => setMenuOpen(false)}>Créer un compte</Link>
+            <Link to="/login" onClick={() => setMenuOpen(false)}>
+              <FaSignInAlt style={{ marginRight: '6px' }} />
+              Connexion
+            </Link>
+            <Link to="/signup" onClick={() => setMenuOpen(false)}>
+              <FaUserPlus style={{ marginRight: '6px' }} />
+              S'inscrire
+            </Link>
           </>
         )}
+        {user && <button onClick={() => { setMenuOpen(false); onLogout(); }}>
+          <FaSignInAlt style={{ marginRight: '6px' }} />
+          Déconnexion
+        </button>}
       </div>
     </nav>
   );

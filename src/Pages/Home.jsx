@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Home.css";
-import heroImg from "../assets/Images/cmrV1.jpg"
+
+import Footer from "../Components/Footer";
 import feature1 from "../assets/Images/cmrV1.jpg"
 import feature2 from "../assets/Images/cmrV1.jpg"
 import feature3 from "../assets/Images/cmrV1.jpg"
@@ -25,60 +26,6 @@ export default function Home() {
 
   return (
     <main className="home-page">
-      {/* Hero Section */}
-      <section
-        className="hero"
-        style={{ backgroundImage: `url(${heroImg})` }}
-      >
-        <div className="hero-overlay">
-          <h1 className="hero-title">Voyagez facilement avec votre communauté</h1>
-          <form className="search-form" onSubmit={handleSearch}>
-            <div className="input-group">
-              <input
-                type="text"
-                name="depart"
-                placeholder="Départ"
-                value={search.depart}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <input
-                type="text"
-                name="arrivee"
-                placeholder="Destination"
-                value={search.arrivee}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <input
-                type="date"
-                name="date"
-                value={search.date}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <input
-                type="number"
-                name="passagers"
-                min="1"
-                value={search.passagers}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit" className="search-btn">
-              Rechercher
-            </button>
-          </form>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section className="features">
         <div className="feature-card">
@@ -97,6 +44,8 @@ export default function Home() {
           <p>Rencontrez des personnes partageant vos trajets.</p>
         </div>
       </section>
+      <Footer />
     </main>
+    
   );
 }
