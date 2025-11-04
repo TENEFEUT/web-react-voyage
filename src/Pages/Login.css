@@ -1,0 +1,25 @@
+/* login-page = signup-page */
+.signup-page {  }
+
+/* Card */
+.signup-card {}
+
+/* Inputs flottants */
+.input-group { position: relative; margin-bottom: 16px; }
+.input-group input { /* padding + border-radius + couleur */ }
+.input-group i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: white; }
+.input-group label { position: absolute; left: 50px; top: 50%; transform: translateY(-50%); transition: 0.2s; color: rgba(255,255,255,0.8); }
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label { top: -8px; font-size: 0.75rem; color: #ffd166; }
+
+/* Bouton */
+.signup-card button { width: 100%; padding: 14px; border-radius: 10px; background: linear-gradient(90deg,#ffd166,#ffbe3b); color: #07386c; cursor: pointer; transition: 0.25s; }
+.signup-card button:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255,209,102,0.45); }
+
+/* Error */
+.error { color: #ffb8b8; background: rgba(255,0,0,0.25); text-align: center; padding: 8px; border-radius: 8px; margin-bottom: 8px; }
+
+/* Login redirect */
+.login-redirect { text-align: center; margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+.login-link { color: #ffd166; font-weight: 700; margin-left: 5px; text-decoration: none; }
+.login-link:hover { color: #fff; text-shadow: 0 0 8px rgba(255,209,102,0.9); }
