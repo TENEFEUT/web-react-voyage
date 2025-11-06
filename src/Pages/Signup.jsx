@@ -29,7 +29,7 @@ export default function Signup({ onSignup }) {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     onSignup(newUser);
-    navigate('/reservation');
+    navigate('/home');
   };
 
   return (

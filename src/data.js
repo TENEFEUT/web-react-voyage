@@ -20,4 +20,25 @@ export const destinations = [
     prix: 899,
     image: "https://source.unsplash.com/random/300x200/?newyork",
   },
+  {
+    id: 4,
+    nom: "Rennes",
+    description: "La ville qui ne dort jamais, entre gratte-ciels et culture.",
+    prix: 899,
+    image: "https://source.unsplash.com/random/300x200/?newyork",
+  },
+  {
+    id: 3,
+    nom: "Lille",
+    description: "La ville qui ne dort jamais, entre gratte-ciels et culture.",
+    prix: 899,
+    image: "https://source.unsplash.com/random/300x200/?newyork",
+  },
+  {
+    id: 3,
+    nom: "Marseille",
+    description: "La ville qui ne dort jamais, entre gratte-ciels et culture.",
+    prix: 899,
+    image: "https://source.unsplash.com/random/300x200/?newyork",
+  },
 ];

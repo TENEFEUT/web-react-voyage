@@ -26,7 +26,7 @@ export default function Login({ onLogin }) {
     }
 
     onLogin(user);
-    navigate('/reservation');
+    navigate('/home');
   };
 
   return (

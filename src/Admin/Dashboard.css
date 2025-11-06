@@ -1,0 +1,189 @@
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+
+/* Sidebar  */
+.admin-sidebar {
+  position: fixed;      
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background: linear-gradient(145deg, #4b6cb7, #182848);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 30px;    
+  border-bottom-right-radius: 30px; 
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.admin-sidebar h2 {
+  font-size: 26px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Boutons du menu */
+.admin-sidebar button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin: 12px 0;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.admin-sidebar button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(5px);
+}
+
+.admin-sidebar button.active {
+  background: #fff;
+  color: #4b6cb7;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateX(2px);
+}
+
+/* Contenu principal */
+.admin-content {
+  margin-left: 260px; 
+  flex: 1;
+  padding: 40px;
+  min-height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 0 30px 30px 0;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Titres des onglets */
+.admin-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #4b6cb7;
+}
+
+/* Tables modernes */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table thead {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 16px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+}
+
+.admin-table tbody tr:hover {
+  background: #f3f6ff;
+}
+
+/* Buttons d’action */
+.actions button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.edit-btn {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #3a5199;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background: #ff4b5c;
+  color: #fff;
+  margin-left: 8px;
+}
+
+.delete-btn:hover {
+  background: #e03e50;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .admin-wrapper {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 0;
+    padding: 15px;
+  }
+
+  .admin-sidebar h2 {
+    display: none;
+  }
+
+  .admin-sidebar button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .admin-content {
+    margin-left: 0;
+    padding: 25px;
+    border-radius: 0;
+  }
+}

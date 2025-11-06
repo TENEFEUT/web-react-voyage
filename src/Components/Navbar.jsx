@@ -19,6 +19,12 @@ export default function Navbar({ user, onLogout }) {
         <Link to="/reservation">Réserver</Link>
         <Link to="/suivi">Suivi Trajet</Link>
         {user && <Link to="/history">Historique</Link>}
+
+
+        {/* Lien Admin visible seulement si user.admin */}
+        {user?.role === "admin" && (
+          <Link to="/admin/dashboard">Admin</Link>
+        )}
       </div>
 
       {/* Bouton utilisateur */}
@@ -27,12 +33,22 @@ export default function Navbar({ user, onLogout }) {
           className="user-icon" 
           onClick={() => setUserMenuOpen(!userMenuOpen)} 
         />
+
         <div className={`user-dropdown${userMenuOpen ? ' open' : ''}`}>
           {user ? (
-            <button onClick={() => { onLogout(); setUserMenuOpen(false); }}>
-              <FaSignInAlt style={{ marginRight: '6px' }} />
-              Déconnexion
-            </button>
+            <>
+              {/* Lien Admin ici aussi */}
+              {user.role === "admin" && (
+                <Link to="/admin/destinations" onClick={() => setUserMenuOpen(false)}>
+                  Espace Admin
+                </Link>
+              )}
+
+              <button onClick={() => { onLogout(); setUserMenuOpen(false); }}>
+                <FaSignInAlt style={{ marginRight: '6px' }} />
+                Déconnexion
+              </button>
+            </>
           ) : (
             <>
               <Link to="/login" onClick={() => setUserMenuOpen(false)}>
@@ -61,6 +77,12 @@ export default function Navbar({ user, onLogout }) {
         <Link to="/reservation" onClick={() => setMenuOpen(false)}>Réserver</Link>
         <Link to="/suivi" onClick={() => setMenuOpen(false)}>Suivi Trajet</Link>
         {user && <Link to="/history" onClick={() => setMenuOpen(false)}>Historique</Link>}
+
+        {/* Lien admin menu mobile */}
+        {user?.role === "admin" && (
+  <Link to="/admin/dashboard">Admin</Link>
+)}
+
         {!user && (
           <>
             <Link to="/login" onClick={() => setMenuOpen(false)}>
@@ -73,10 +95,13 @@ export default function Navbar({ user, onLogout }) {
             </Link>
           </>
         )}
-        {user && <button onClick={() => { setMenuOpen(false); onLogout(); }}>
-          <FaSignInAlt style={{ marginRight: '6px' }} />
-          Déconnexion
-        </button>}
+
+        {user && 
+          <button onClick={() => { setMenuOpen(false); onLogout(); }}>
+            <FaSignInAlt style={{ marginRight: '6px' }} />
+            Déconnexion
+          </button>
+        }
       </div>
     </nav>
   );

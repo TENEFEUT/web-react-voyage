@@ -1,0 +1,162 @@
+/* ====== PAGE CONTAINER ====== */
+.admin-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffffc8;
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+  font-family: "Inter", sans-serif;
+}
+
+.admin-container h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #1c1c1c;
+}
+
+/* ====== FORM ====== */
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.admin-form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  transition: 0.2s;
+}
+
+.admin-form input:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 119, 255, 0.4);
+}
+
+.admin-form button {
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0077ff, #00c8ff);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.admin-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 120, 255, 0.35);
+}
+
+/* ====== TABLE ====== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.admin-table thead {
+  background: #f4f8ff;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.admin-table th {
+  font-weight: 700;
+  color: #333;
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: 0.25s;
+}
+
+.admin-table tbody tr:hover {
+  background: #f7fbff;
+}
+
+/* Images */
+.admin-table img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ====== BUTTONS ====== */
+.actions button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+/* Edit */
+.edit-btn {
+  background: #1f8bff;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #006be8;
+  transform: translateY(-2px);
+}
+
+/* Delete */
+.delete-btn {
+  background: #ff4747;
+  color: white;
+  margin-left: 8px;
+}
+
+.delete-btn:hover {
+  background: #e13434;
+  transform: translateY(-2px);
+}
+
+/* ====== RESPONSIVE TABLE ====== */
+@media (max-width: 800px) {
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  .admin-table td {
+    display: block;
+    text-align: right;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .admin-table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+    color: #555;
+  }
+}

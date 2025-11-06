@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle at 20% 30%, #0b72e7, #0a4da0 60%, #062c64);
-  overflow: hidden; /* stop background overflow */
+  overflow: hidden; 
   padding: 20px;
 }
 
@@ -39,10 +39,10 @@
   margin-bottom: 16px;
 }
 
-/* fix overflow */
+
 .input-group input {
-  width: 100%;               /* ✅ stay inside card */
-  box-sizing: border-box;    /* ✅ include padding */
+  width: 100%;               
+  box-sizing: border-box;    
   padding: 14px 14px 14px 50px;
   background: rgba(255,255,255,0.25);
   border: 1px solid rgba(255,255,255,0.4);
@@ -51,7 +51,7 @@
   color: white;
   font-size: 0.95rem;
   transition: 0.2s ease;
-  display: block; /* ✅ no inline issues */
+  display: block; 
 }
 
 .input-group input:focus {
@@ -59,7 +59,6 @@
   box-shadow: 0 0 8px rgba(255,209,102,0.7);
 }
 
-/* icon fix */
 .input-group i {
   position: absolute;
   left: 14px;
@@ -71,7 +70,7 @@
   pointer-events: none;
 }
 
-/* floating label */
+
 .input-group input::placeholder {
   color: transparent;
 }
@@ -79,7 +78,7 @@
 .input-group label {
   position: absolute;
   top: 50%;
-  left: 50px;  /* ✅ aligned with input text */
+  left: 50px;  
   transform: translateY(-50%);
   font-size: 0.9rem;
   color: rgba(255,255,255,0.8);
